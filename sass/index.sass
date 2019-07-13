@@ -1,1 +1,29 @@
 @import '_color.sass'
+
+html,body,#app
+  height: 100%
+  margin: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  background-color: #333
+  font-family: serif
+  .ticket
+    background-color: #fff
+    padding: 30px 15px
+    margin: 20px
+    text-align: center
+    transition: all 0.2s ease
+    cursor: pointer
+    .arrow
+      font-size: 40px
+    .station
+      font-size: 30px
+      margin: 10px 10px
+      font-weight: bold
+    .info
+      font-size: 18px
+      margin-top: 10px
+    &:hover
+      transform: translate(0,-10px)
+      box-shadow: 0px 20px 10px rgba(0,0,0,0.4)

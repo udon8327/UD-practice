@@ -15,6 +15,25 @@ block js
 
 //---------------------------內容區Start---------------------------
 block content
-  
 
+	#app
+		.ticket
+			.date {{ticket.date}}
+			.info {{company}}
+			.info {{ticket.direction=="south"?"南下":"北上"}}
+			.station {{ticket.from}}站
+			.arrow ↓
+			.station {{ticket.to}}站
+			.info(v-html="ticket.other")
+			.info 特價 {{ticket.price*ticket.discount}}元
+
+		.ticket
+			.date {{ticket.date}}
+			.info {{company}}
+			.info {{ticket.direction=="south"?"南下":"北上"}}
+			.station {{ticket.to}}站
+			.arrow ↓
+			.station {{ticket.from}}站
+			.info(v-html="ticket.other")
+			.info 售價 {{ticket.price}}元
 //---------------------------內容區End---------------------------

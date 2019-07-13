@@ -22,6 +22,28 @@
   </head>
   <body>
     <header></header>
+    <div id="app">
+      <div class="ticket">
+        <div class="date">{{ticket.date}}</div>
+        <div class="info">{{company}}</div>
+        <div class="info">{{ticket.direction=="south"?"南下":"北上"}}</div>
+        <div class="station">{{ticket.from}}站</div>
+        <div class="arrow">↓</div>
+        <div class="station">{{ticket.to}}站</div>
+        <div class="info" v-html="ticket.other"></div>
+        <div class="info">特價 {{ticket.price*ticket.discount}}元</div>
+      </div>
+      <div class="ticket">
+        <div class="date">{{ticket.date}}</div>
+        <div class="info">{{company}}</div>
+        <div class="info">{{ticket.direction=="south"?"南下":"北上"}}</div>
+        <div class="station">{{ticket.to}}站</div>
+        <div class="arrow">↓</div>
+        <div class="station">{{ticket.from}}站</div>
+        <div class="info" v-html="ticket.other"></div>
+        <div class="info">售價 {{ticket.price}}元</div>
+      </div>
+    </div>
     <footer></footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>

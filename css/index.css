@@ -1,0 +1,38 @@
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: #333;
+  font-family: serif; }
+  html .ticket, body .ticket, #app .ticket {
+    background-color: #fff;
+    padding: 30px 15px;
+    margin: 20px;
+    text-align: center;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    cursor: pointer; }
+    html .ticket .arrow, body .ticket .arrow, #app .ticket .arrow {
+      font-size: 40px; }
+    html .ticket .station, body .ticket .station, #app .ticket .station {
+      font-size: 30px;
+      margin: 10px 10px;
+      font-weight: bold; }
+    html .ticket .info, body .ticket .info, #app .ticket .info {
+      font-size: 18px;
+      margin-top: 10px; }
+    html .ticket:hover, body .ticket:hover, #app .ticket:hover {
+      -webkit-transform: translate(0, -10px);
+      -ms-transform: translate(0, -10px);
+      transform: translate(0, -10px);
+      -webkit-box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 0px 20px 10px rgba(0, 0, 0, 0.4); }
