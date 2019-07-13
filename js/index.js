@@ -1,16 +1,43 @@
 var vm = new Vue({
   el: "#app",
   data: {
-    company: "台灣鐵路局",
-    ticket: {
-      date: "2018.05.02-05.04",
-      from: "台北",
-      to: "高雄",
-      direction: "south",
-      other: "<b>限當日當次車有效</b>",
-      price: 250,
-      discount: 0.5,
-      link: "http://komica.org"
-    }
+    basePrice: 100,
+    serviceFee: 10,
+    minPrice: 50,
+    maxPrice: 1000,
+    keyword: "",
+    cards: [
+      {
+        title: "醬油拉麵",
+        cover: "http://www.tabirai.net/tabirai-uploader/img/0005408/s1_0005408.jpg",
+        price: 150,
+        soldOut: true
+      },
+      {
+        title: "豚骨拉麵",
+        cover: "http://3.bp.blogspot.com/-aj0ideQcly0/VfZ5RvLGyDI/AAAAAAAAWzE/Vy6U0R6vs90/s1600/IMG_2848.jpg",
+        price: 250
+      },
+      {
+        title: "南洋咖哩拉麵",
+        cover: "http://img.anikolife.com/uploads/20180325191054_65.jpg",
+        price: 300
+      },{
+        title: "味噌叉燒拉麵",
+        cover: "http://img.listen-vision.com/uploads/20170830235936_33.jpg",
+        price: 150
+      },
+      {
+        title: "蝦醬豚骨拉麵",
+        cover: "http://d10pyp7ylo9bub.cloudfront.net/2017/06/tokyofruitramen_papapapapain1.jpg",
+        price: 250
+      },
+      {
+        title: "豚骨叉燒拉麵",
+        cover: "https://farm1.static.flickr.com/380/32022985490_3e2bfbe774_b.jpg",
+        price: 300
+      }
+      
+    ]
   }
 })

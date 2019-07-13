@@ -1,3 +1,4 @@
+//- 設定區
 extends _layout.pug
 
 block var
@@ -13,27 +14,29 @@ block css
 block js
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js')
 
-//---------------------------內容區Start---------------------------
+//- 內容區
 block content
 
 	#app
-		.ticket
-			.date {{ticket.date}}
-			.info {{company}}
-			.info {{ticket.direction=="south"?"南下":"北上"}}
-			.station {{ticket.from}}站
-			.arrow ↓
-			.station {{ticket.to}}站
-			.info(v-html="ticket.other")
-			.info 特價 {{ticket.price*ticket.discount}}元
-
-		.ticket
-			.date {{ticket.date}}
-			.info {{company}}
-			.info {{ticket.direction=="south"?"南下":"北上"}}
-			.station {{ticket.to}}站
-			.arrow ↓
-			.station {{ticket.from}}站
-			.info(v-html="ticket.other")
-			.info 售價 {{ticket.price}}元
-//---------------------------內容區End---------------------------
+		.control
+			label 最小價錢
+			input(v-model="minPrice")
+			label 最大價錢
+			input(v-model="maxPrice")
+			label 關鍵字
+			input(v-model="keyword")
+			br
+			span(v-for="(card,num) in cards")
+				span {{num}}
+				input(v-model.number="card.price")
+				input(type="checkbox", v-model="card.soldOut")
+		.menu
+			h4(v-if="keyword") 以下符合搜尋{{keyword}}的項目
+			.cards
+				.card(v-for="card in cards",v-if="(basePrice + card.price>minPrice) && (basePrice + card.price<maxPrice) && (card.title.indexOf(keyword)!=-1)")
+					img.cover(:src="card.cover")
+					.info
+						h3 {{card.title}}
+							.soldOut(v-show="card.soldOut") 已售完
+						.price {{basePrice + card.price}}$
+							.other (+{{serviceFee}}%服務費)

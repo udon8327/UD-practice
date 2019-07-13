@@ -23,25 +23,30 @@
   <body>
     <header></header>
     <div id="app">
-      <div class="ticket">
-        <div class="date">{{ticket.date}}</div>
-        <div class="info">{{company}}</div>
-        <div class="info">{{ticket.direction=="south"?"南下":"北上"}}</div>
-        <div class="station">{{ticket.from}}站</div>
-        <div class="arrow">↓</div>
-        <div class="station">{{ticket.to}}站</div>
-        <div class="info" v-html="ticket.other"></div>
-        <div class="info">特價 {{ticket.price*ticket.discount}}元</div>
+      <div class="control">
+        <label>最小價錢</label>
+        <input v-model="minPrice">
+        <label>最大價錢</label>
+        <input v-model="maxPrice">
+        <label>關鍵字</label>
+        <input v-model="keyword"><br><span v-for="(card,num) in cards"><span>{{num}}</span>
+          <input v-model.number="card.price">
+          <input type="checkbox" v-model="card.soldOut"></span>
       </div>
-      <div class="ticket">
-        <div class="date">{{ticket.date}}</div>
-        <div class="info">{{company}}</div>
-        <div class="info">{{ticket.direction=="south"?"南下":"北上"}}</div>
-        <div class="station">{{ticket.to}}站</div>
-        <div class="arrow">↓</div>
-        <div class="station">{{ticket.from}}站</div>
-        <div class="info" v-html="ticket.other"></div>
-        <div class="info">售價 {{ticket.price}}元</div>
+      <div class="menu">
+        <h4 v-if="keyword">以下符合搜尋{{keyword}}的項目</h4>
+        <div class="cards">
+          <div class="card" v-for="card in cards" v-if="(basePrice + card.price&gt;minPrice) &amp;&amp; (basePrice + card.price&lt;maxPrice) &amp;&amp; (card.title.indexOf(keyword)!=-1)"><img class="cover" :src="card.cover">
+            <div class="info">
+              <h3>{{card.title}}
+                <div class="soldOut" v-show="card.soldOut">已售完</div>
+              </h3>
+              <div class="price">{{basePrice + card.price}}$
+                <div class="other">(+{{serviceFee}}%服務費)</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <footer></footer>
