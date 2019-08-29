@@ -14,23 +14,16 @@ block css
 block js
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js')
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js')
-	script(src='https://cdnjs.cloudflare.com/ajax/libs/Mock.js/1.0.0/mock-min.js')
 
 //- 內容區
 block content
 	
 	main
-		#app
-			h1 {{ title }}
-			hr
-			h3 用戶資料：
-			h2(v-if="loading") 讀取中...
-			ul(v-for="user in users") 編號：{{ user.id }}
-				li 姓名：{{ user.name}}
-				li 生日：{{ user.birthday}}
-				li 城市：{{ user.city}}
-			hr
-			ul
-				li(v-for="member in members") {{ member.name }}
-			ul
-				li(v-for="value in peoples") {{ value }}
+		table.table.table-striped.table-bordered.table-hover
+			thead.thead-dark
+				tr
+					th 編號
+					th 姓名
+					th 居住城市
+					th 生日
+			tbody

@@ -1,42 +1,11 @@
-// Mock响应模板
-Mock.mock('http://test.com', {
-  "user|3": [{   // 随机生成1到3个数组元素
-    'name': '@cname',  // 中文名称
-    'id|+1': 1,    // 属性值自动加 1，初始值为88
-    'birthday': '@date',  // 日期
-    'city': '@city(true)',   // 中国城市
-  }]
-}).setup({ timeout: '100-1000' });
-
-var vm = new Vue({
-  el: "#app",
-  data: {
-    title: Mock.mock('@date("yyyy/MM/dd hh:mm:ss")'),
-    users: "",
-    members: [
-      { name: 'Runoob' },
-      { name: 'Google' },
-      { name: 'Taobao' }
-    ],
-    peoples: {
-      name: 'Aqours',
-      url: 'http://www.runoob.com',
-      slogan: '水水'
-    },
-    loading: false
-  },
-  mounted: function (){
-    this.loading = true;
-    axios
-      .get("http://test.com")
-      .then(function(res){
-        console.log(res);
-        vm.users = res.data.user;
-        vm.loading = false;
-        console.log(vm.users);
-      })
-      .catch(function(err){
-        console.log(err);
-      })
-  }
-})
+axios
+	.get('https://www.easy-mock.com/mock/5d39b2757e156329c205db2d/')
+	.then(function (res) {
+		resArr = res.data.data;
+		resArr.forEach(function(item,index){
+			$('tbody').append(`<tr><td>${index+1<10?"0"+(index+1):index+1}</td><td>${item[0]}</td><td>${item[1]}</td><td>${item[2]}</td></tr>`);
+		});
+	})
+	.catch(function (err) {
+		alert('取得資料失敗');
+	})
